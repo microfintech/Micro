@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MicroFinTech - Fundación de tecnología enfocada en el desarrollo de zonas rurales a través de soluciones fintech.">
+    <title>MicroFinTech - Tecnología para el Desarrollo Rural</title>
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome para iconos (Opcional, para Facebook) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <!-- Estilos CSS Integrados -->
+    <style>
+        /* --- Variables y Reseteo Básico --- */
+        :root {
+            --verde-microfintech: #0C3D2E;
+            --azul-microfintech: #0C1F4E;
+            --white: #FFFFFF;
+            --light-gray: #f8f9fa;
+            --dark-gray: #343a40;
+            --text-muted: #6c757d;
+            --whatsapp-green: #25D366;
+            --facebook-blue: #1877F2;
+
+            --primary-font: 'Poppins', sans-serif;
+            --border-radius-sm: 5px;
+            --border-radius-md: 10px;
+            --border-radius-lg: 20px;
+            --box-shadow-light: 0 5px 20px rgba(0, 0, 0, 0.08);
+            --box-shadow-strong: 0 8px 25px rgba(0, 0, 0, 0.12);
+            --transition-speed: 0.3s;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--primary-font); line-height: 1.7; color: var(--dark-gray); background-color: var(--white); font-weight: 300; overflow-x: hidden; }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3 { font-weight: 600; margin-bottom: 1rem; line-height: 1.3; color: var(--azul-microfintech); }
+        h1 { font-size: clamp(2.2rem, 5vw, 3rem); }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 2rem; }
+        p { margin-bottom: 1.2rem; max-width: 750px; /* Aumentar ligeramente el ancho máximo */ }
+        a { color: var(--verde-microfintech); text-decoration: none; transition: color var(--transition-speed) ease; }
+        a:hover { color: #115a42; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* --- Botones --- */
+        .btn { display: inline-block; padding: 12px 28px; border: none; border-radius: var(--border-radius-lg); font-size: 1rem; font-weight: 600; text-align: center; text-decoration: none; cursor: pointer; transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease; box-shadow: var(--box-shadow-light); }
+        .btn-donate { background-color: var(--verde-microfintech); color: var(--white); }
+        .btn-donate:hover { background-color: #115a42; transform: translateY(-4px) scale(1.02); box-shadow: var(--box-shadow-strong); }
+        .btn-primary { background-color: var(--verde-microfintech); color: var(--white); }
+        .btn-primary:hover { background-color: #115a42; transform: translateY(-4px) scale(1.02); box-shadow: var(--box-shadow-strong); }
+        .btn-secondary { background-color: var(--azul-microfintech); color: var(--white); }
+        .btn-secondary:hover { background-color: #142c6e; transform: translateY(-4px) scale(1.02); box-shadow: var(--box-shadow-strong); }
+        .btn-lg { padding: 15px 35px; font-size: 1.1rem; }
+
+        /* --- Cabecera --- */
+        header { background: var(--white); padding: 0.8rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06); }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo-link { display: flex; align-items: center; }
+        .logo { max-height: 60px; border-radius: 5px; }
+        .logo-icono { color: var(--verde-microfintech); }
+        .logo-texto { color: var(--azul-microfintech); }
+        header nav ul { list-style: none; display: flex; align-items: center; gap: 20px; }
+        header nav ul li a { color: var(--dark-gray); font-weight: 400; padding: 8px 12px; border-radius: var(--border-radius-sm); position: relative; transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease; }
+        header nav ul li a:hover, header nav ul li a.active { color: var(--verde-microfintech); background-color: rgba(12, 61, 46, 0.08); }
+        .nav-donate-btn { padding: 8px 20px !important; font-size: 0.95rem; box-shadow: none; background-color: var(--verde-microfintech); color: var(--white); }
+        .nav-donate-btn:hover { transform: none; background-color: #115a42; box-shadow: var(--box-shadow-light); }
+
+        /* --- Sección Hero --- */
+        #hero { background: linear-gradient(to right, rgba(12, 31, 78, 0.85), rgba(12, 61, 46, 0.75)), url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=1920') no-repeat center center/cover; color: var(--white); padding: 6rem 0 8rem 0; text-align: center; position: relative; overflow: hidden; }
+        #hero h1 { color: var(--white); margin-bottom: 1.5rem; font-weight: 700; text-shadow: 2px 2px 8px rgba(0,0,0,0.4); }
+        #hero p { font-size: 1.2rem; margin-bottom: 2.5rem; max-width: 650px; margin-left: auto; margin-right: auto; opacity: 0.9; }
+        #hero .btn-donate { background-color: var(--verde-microfintech); }
+        #hero .btn-donate:hover { background-color: #167757; box-shadow: 0 8px 25px rgba(12, 61, 46, 0.4); }
+        .curve { position: absolute; bottom: -1px; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg); }
+        .curve svg { position: relative; display: block; width: calc(100% + 1.3px); height: 100px; }
+        .curve .shape-fill { fill: var(--white); }
+
+        /* --- Secciones de Contenido --- */
+        .content-section { padding: 5rem 0; }
+        .content-section h2 { text-align: center; margin-bottom: 3rem; position: relative; padding-bottom: 0.8rem; color: var(--azul-microfintech); }
+        .content-section h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background-color: var(--verde-microfintech); border-radius: 2px; }
+        .content-section p { margin-left: auto; margin-right: auto; /* Centra párrafos si son más estrechos */ text-align: justify; } /* Justificar texto */
+
+        #about .about-content,
+        #vision .container,
+        #mision .container,
+        #nicho .container { /* Aplica a secciones de texto largo */
+             max-width: 900px; /* Limita ancho para mejor lectura */
+        }
+
+        /* Estilo específico para la lista de Valores */
+        #valores ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0 auto; /* Centrar lista */
+            max-width: 800px; /* Ancho para la lista */
+            column-count: 1; /* Una columna por defecto */
+            column-gap: 2rem;
+        }
+        #valores li {
+            margin-bottom: 0.8rem;
+            padding: 10px 15px;
+            background-color: rgba(12, 61, 46, 0.05); /* Fondo verde muy sutil */
+            border-left: 4px solid var(--verde-microfintech);
+            border-radius: var(--border-radius-sm);
+            break-inside: avoid-column; /* Evita que los items se corten entre columnas */
+            font-weight: 400; /* Peso de fuente para valores */
+        }
+        @media (min-width: 768px) {
+             #valores ul {
+                column-count: 2; /* Dos columnas en pantallas medianas */
+             }
+        }
+         @media (min-width: 992px) {
+             #valores ul {
+                column-count: 3; /* Tres columnas en pantallas grandes */
+             }
+        }
+
+
+        /* --- Sección Contacto --- */
+        #contact { text-align: center; }
+        #contact h2 { color: var(--azul-microfintech); }
+        #contact .contact-info { margin: 2rem 0; font-size: 1.1rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; /* Más espacio */ }
+        #contact .contact-info p, #contact .contact-info div { margin-bottom: 0; display: flex; align-items: center; justify-content: center; gap: 10px; /* Más espacio icono-texto */ }
+        #contact .contact-info a { font-weight: 400; color: var(--dark-gray); }
+        #contact .contact-info a:hover { color: var(--verde-microfintech); }
+        #contact .contact-info span.icon { color: var(--azul-microfintech); font-size: 1.2em; width: 25px; /* Ancho fijo para alinear */ text-align: center; }
+        .whatsapp-icon { width: 22px; height: 22px; fill: var(--whatsapp-green); flex-shrink: 0; /* Evita que se encoja */ }
+        #contact .contact-info div a { color: var(--dark-gray); }
+        #contact .contact-info div a:hover { color: var(--verde-microfintech); }
+        /* Estilo para etiquetas de WhatsApp */
+        .whatsapp-label {
+            font-weight: 600;
+            color: var(--azul-microfintech);
+            margin-right: 5px; /* Espacio antes del icono */
+        }
+
+        /* --- Sección Donar Destacada --- */
+        .donate-highlight { background-color: var(--azul-microfintech); color: var(--white); padding: 4rem 1rem; text-align: center; border-radius: var(--border-radius-md); margin: 3rem auto; max-width: 900px; box-shadow: var(--box-shadow-strong); }
+        .donate-highlight h2 { color: var(--white); margin-bottom: 1rem; }
+        .donate-highlight h2::after { background-color: var(--white); }
+        .donate-highlight p { color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; text-align: center; }
+        .donate-highlight .btn { background-color: var(--verde-microfintech); color: var(--white); }
+        .donate-highlight .btn:hover { background-color: #167757; color: var(--white); transform: translateY(-4px) scale(1.05); box-shadow: 0 8px 25px rgba(12, 61, 46, 0.5); }
+
+        /* --- Fondos Alternos y Curvas --- */
+        .bg-light { background-color: var(--light-gray); position: relative; padding-top: 5rem; }
+        .bg-light::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 80px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M1200 0L0 103.52V120h1200V0z' fill='%23f8f9fa' fill-opacity='1'%3E%3C/path%3E%3C/svg%3E"); background-size: cover; background-repeat: no-repeat; background-position: center top; z-index: 5; }
+
+        /* --- Pie de Página --- */
+        footer { background: var(--azul-microfintech); color: var(--light-gray); text-align: center; padding: 2.5rem 0; margin-top: 4rem; font-size: 0.9rem; }
+        footer p { margin: 0; opacity: 0.85; }
+        .social-links { margin-top: 1rem; }
+        .social-links a { color: var(--light-gray); margin: 0 12px; font-size: 1.4rem; /* Iconos más grandes */ transition: color var(--transition-speed) ease; }
+        .social-links a:hover { color: var(--verde-microfintech); }
+         .social-links a i { /* Si usas Font Awesome */
+              vertical-align: middle;
+         }
+
+        /* --- Animaciones Sutiles --- */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-on-load { opacity: 0; animation: fadeIn 0.8s ease-out forwards; }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+        /* --- Diseño Responsivo --- */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .container { max-width: 90%; }
+            #hero { padding: 5rem 0 7rem 0; }
+            .bg-light::before { height: 60px; }
+             #valores ul { column-count: 2; } /* 2 columnas en tablet */
+        }
+        @media (max-width: 768px) {
+            header .container { flex-direction: column; align-items: center; }
+            .logo-link { margin-bottom: 1rem; }
+            header nav ul { justify-content: center; flex-wrap: wrap; gap: 10px; padding-top: 0.5rem; }
+            header nav ul li { margin-left: 0; }
+            .nav-donate-btn { margin-top: 0.5rem; width: auto; }
+            #hero { padding: 4rem 0 6rem 0; }
+            #hero h1 { font-size: 2rem; }
+            #hero p { font-size: 1.1rem; }
+            .content-section { padding: 4rem 0; }
+            .bg-light { padding-top: 4rem; }
+            h2 { font-size: 1.8rem; margin-bottom: 2rem; }
+            #about .about-content, #vision .container, #mision .container, #nicho .container { max-width: 100%; /* Full width en móvil */ }
+            .content-section p { text-align: left; } /* Alinear a la izquierda en móvil */
+             #valores ul { column-count: 1; } /* 1 columna en móvil */
+            .donate-highlight { padding: 3rem 1rem; margin: 2rem 1rem; }
+            .donate-highlight h2 { font-size: 1.6rem; }
+            .curve svg { height: 60px; }
+            .bg-light::before { height: 50px; }
+             #contact .contact-info { font-size: 1rem; gap: 0.8rem;} /* Reducir tamaño y espacio en móvil */
+             .whatsapp-label { font-size: 0.9rem; }
+        }
+        @media (max-width: 576px) {
+            header nav ul { gap: 5px; }
+            header nav ul li a { padding: 6px 8px; font-size: 0.9rem; }
+            .nav-donate-btn { padding: 6px 15px !important; font-size: 0.9rem; }
+            #hero { padding: 3rem 0 5rem 0; }
+            #hero h1 { font-size: 1.8rem; }
+            #hero p { font-size: 1rem; }
+            .btn { padding: 10px 22px; font-size: 0.95rem; }
+            .btn-lg { padding: 12px 30px; font-size: 1rem; }
+            .content-section { padding: 3rem 0; }
+            .bg-light { padding-top: 3rem; }
+            h2 { font-size: 1.6rem; }
+            .donate-highlight { padding: 2.5rem 1rem; }
+            .curve svg { height: 50px; }
+            .bg-light::before { height: 40px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo-link">
+                <img src="https://i.ibb.co/LXpVT9bR/Whats-App-Image-2025-05-04-at-3-25-33-PM.jpg" alt="Logo MicroFinTech" class="logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#about">Quiénes Somos</a></li>
+                    <li><a href="#vision">Visión</a></li> <!-- Enlace a nueva sección -->
+                    <li><a href="#mision">Misión</a></li> <!-- Enlace a nueva sección -->
+                    <li><a href="#contact">Contáctanos</a></li>
+                    <li><a href="#donate-section" class="btn btn-donate nav-donate-btn">Donar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección Hero (Introducción) -->
+    <section id="hero">
+        <div class="container hero-content">
+            <h1 class="animate-on-load">Innovación Tecnológica para Comunidades Rurales</h1>
+            <p class="animate-on-load delay-1">MicroFinTech es una fundación dedicada a impulsar el desarrollo en zonas rurales mediante la implementación de soluciones tecnológicas y financieras accesibles.</p>
+            <a href="#donate-section" class="btn btn-donate btn-lg animate-on-load delay-2">Apoya Nuestra Causa</a>
+        </div>
+        <!-- Curva SVG -->
+        <div class="curve">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M1200 120L0 16.48V0h1200v120z" class="shape-fill" fill="var(--white)"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Sección Sobre Nosotros (Historia) -->
+    <section id="about" class="content-section">
+        <div class="container about-content">
+            <h2>¿Quiénes Somos?</h2>
+            <p>
+                La Fundación Microfintech nació de la visión compartida de un grupo de profesionales comprometidos con el desarrollo económico, comunitario y la reducción de la desigualdad. Su historia se remonta a principios de la década pasada, en un momento en que se observaba una brecha significativa en el acceso a la capacitación, el crédito y el apoyo para proyectos sociales en las comunidades más marginadas de nuestra región.
+            </p>
+            <p>
+                La semilla de esta fundación fue sembrada por un equipo multidisciplinario de profesionales y líderes comunitarios que, al trabajar en diferentes proyectos de desarrollo, se percataron de la urgente necesidad de ofrecer herramientas prácticas y recursos financieros a aquellos que deseaban mejorar sus condiciones de vida pero carecían de los medios para hacerlo.
+            </p>
+             <p>
+                Motivados por el deseo de promover un cambio tangible y sostenible, estos visionarios se unieron para establecer la Fundación MICROFINTECH en el 2020, para satisfacer las necesidades de servicios de micro financiamiento, a través de la transferencia del Know How en micro finanzas a las instituciones interesadas en incursionar en este mercado o que ya tienen programas de micro crédito y requieren fortalecer su tecnología crediticia de micro crédito y ayudar al crecimiento sostenido de los micro empresarios, familias, gremios, de la mujer, y de aquellos sectores marginados de la sociedad, a través de financiamiento con costos inferiores a los del mercado.
+            </p>
+            <p>
+                Desde entonces, la organización se ha dedicado incansablemente a empoderar a individuos y comunidades a través de programas integrales de capacitación, acceso equitativo al crédito y apoyo en la implementación de proyectos sociales. Con el paso de los años, la Fundación ha consolidado alianzas estratégicas con instituciones gubernamentales, empresas privadas y organizaciones no gubernamentales, ampliando así su alcance y capacidad de impacto. Su enfoque centrado en el desarrollo humano y la inclusión social ha permitido que cientos de personas en situación de vulnerabilidad encuentren en la educación, el financiamiento y el acompañamiento técnico el camino hacia un futuro más próspero y digno.
+            </p>
+             <p>
+                Hoy en día, la Fundación continúa su labor con renovado compromiso, consciente de que aún hay muchos desafíos por enfrentar en la construcción de sociedades más justas y equitativas. Con cada capacitación impartida, cada préstamo otorgado y cada proyecto comunitario apoyado, reafirman su convicción de que juntos podemos transformar realidades y construir un mundo donde el progreso sea verdaderamente para todos.
+            </p>
+        </div>
+    </section>
+
+     <!-- Sección Visión -->
+    <section id="vision" class="content-section bg-light">
+        <div class="container">
+            <h2>Visión</h2>
+            <p>
+                Nuestra visión es la de un mundo donde todas las personas, independientemente de su origen o condición socioeconómica, tengan acceso equitativo a la educación, al financiamiento y a los recursos necesarios para realizar sus proyectos de manera sostenible. Aspiramos a ser líderes en la generación de oportunidades para el desarrollo humano y la construcción de sociedades más justas y solidarias, donde el progreso sea inclusivo y sostenible a largo plazo.
+            </p>
+             <p>
+                Además, de ser la mejor iniciativa de transferencia metodológica en micro finanzas, especialmente en la concesión de créditos para la microempresa, para convertirse en un referente en la implementación de programas de micro financiamiento.
+            </p>
+        </div>
+    </section>
+
+     <!-- Sección Misión -->
+    <section id="mision" class="content-section">
+        <div class="container">
+            <h2>Misión</h2>
+            <p>
+                Promover el desarrollo integral de comunidades en situación de vulnerabilidad, ofreciendo oportunidades de capacitación, acceso justo al crédito y apoyo en la implementación de proyectos sociales. Nos comprometemos a empoderar a individuos y grupos para que puedan alcanzar su máximo potencial y contribuir activamente al bienestar colectivo y de esta forma satisfacer plenamente las necesidades y expectativas de las instituciones financieras y no financieras, que requieran asistencia y transferencia metodológica en el ámbito del crédito y de las micro finanzas, para que optimicen los recursos destinados a este segmento de mercado, a través de profesionales altamente calificados, capacitados y con vasta experiencia de campo, además de atender a un alto porcentaje de clientes que se encuentren marginadas de la banca formal, en condiciones óptimas y justas para los mismos.
+            </p>
+        </div>
+    </section>
+
+    <!-- Sección Valores -->
+    <section id="valores" class="content-section bg-light">
+        <div class="container">
+            <h2>Valores</h2>
+            <ul>
+                <li>Ética</li>
+                <li>Profesionalismo</li>
+                <li>Compromiso con la institución</li>
+                <li>Responsabilidad Social</li>
+                <li>Rentabilidad</li>
+                <li>Liderazgo</li>
+                <li>Solidaridad</li>
+                <li>Confidencialidad</li>
+                <li>Seriedad y Cumplimiento</li>
+                <li>Visión de futuro</li>
+                <li>Pro actividad</li>
+                <li>Productividad</li>
+                <li>Honestidad</li>
+                <li>Transparencia</li>
+            </ul>
+        </div>
+    </section>
+
+     <!-- Sección Nicho de Mercado -->
+    <section id="nicho" class="content-section">
+        <div class="container">
+            <h2>Nicho de Mercado</h2>
+            <p>
+                Se encuentra en comunidades y poblaciones en situación de vulnerabilidad socioeconómica que carecen de acceso a oportunidades de capacitación, financiamiento y apoyo para proyectos sociales. Este nicho abarca tanto áreas urbanas como rurales, donde existen necesidades urgentes de desarrollo humano y comunitario.
+            </p>
+             <p>
+                Dentro de este nicho, la fundación se enfoca en personas y grupos que enfrentan barreras para acceder a recursos financieros y educativos, tales como desempleados, microempresarios informales, mujeres cabeza de familia, jóvenes en riesgo social y comunidades indígenas o afrodescendientes, entre otros. Al dirigirse a este nicho específico, la Fundación busca cubrir un vacío en el mercado social, proporcionando servicios y programas diseñados para atender las necesidades particulares de estas comunidades marginadas y promover su inclusión y desarrollo integral.
+            </p>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contact" class="content-section bg-light">
+        <div class="container">
+            <h2>Contáctanos</h2>
+            <p>
+                ¿Interesado en colaborar, ser socio, necesitas financiamiento o más información? ¡Nos encantaría escucharte!
+            </p>
+            <div class="contact-info">
+                <p>
+                    <span class="icon">📧</span> <!-- Icono email -->
+                    <a href="mailto:administrador@microfintech.org">administrador@microfintech.org</a>
+                </p>
+                <!-- WhatsApp para Socios -->
+                <div>
+                    <span class="whatsapp-label">¿Desea ser socio honorario?:</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="whatsapp-icon">
+                         <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                     </svg>
+                    <a href="https://api.whatsapp.com/send?phone=593993396464&text=Hola%2C%20deseo%20informaci%C3%B3n%20para%20ser%20Socio%20Honorario." target="_blank" rel="noopener noreferrer">
+                        +593 99 339 6464
+                    </a>
+                </div>
+                 <!-- WhatsApp para Financiamiento -->
+                <div>
+                     <span class="whatsapp-label">¿Desea financiamiento para su negocio?:</span>
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="whatsapp-icon">
+                         <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                     </svg>
+                    <a href="https://api.whatsapp.com/send?phone=593986517603&text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20financiamiento." target="_blank" rel="noopener noreferrer">
+                        +593 98 651 7603
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Sección Donar (Destacada) -->
+     <section id="donate-section" class="donate-highlight">
+        <div class="container">
+             <h2>Apoya Nuestra Misión</h2>
+             <p>Tu donación nos permite llevar tecnología y oportunidades a más comunidades rurales. ¡Cada contribución hace la diferencia!</p>
+             <a href="#" class="btn btn-primary btn-lg" onclick="alert('Redirigiendo a la plataforma de donación...'); return false;">¡Dona Ahora!</a>
+        </div>
+    </section>
+
+
+    <!-- Pie de Página -->
+    <footer>
+        <div class="container">
+            <p>© 2025 Fundación MicroFinTech. Todos los derechos reservados.</p>
+             <div class="social-links">
+                <a href="https://www.facebook.com/share/19amHuRSqT/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i> <!-- Icono Font Awesome -->
+                </a>
+                <!-- Puedes añadir más redes sociales aquí -->
+                 <!-- <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> -->
+                 <!-- <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
